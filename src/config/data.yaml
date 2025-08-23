@@ -1,6 +1,0 @@
-train: data/split/images/train
-val: data/split/images/val
-test: data/split/images/test
-
-nc: 2
-names: ['occupied', 'empty']
