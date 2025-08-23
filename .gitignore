@@ -4,7 +4,7 @@ data/*
 
 
 # If you have a custom train directory name, add it here too
-yolo_train/
+yolo_train/*
 
 # Common large data and model files (good practice)
 *.pt
