@@ -5,12 +5,12 @@ def download_from_kaggle(dataset, download_path='data/raw'):
     """
     Download a dataset from Kaggle using kagglehub.
     Args:
-        dataset (str): Kaggle dataset identifier, e.g. 'zynicide/wine-reviews'
+        dataset (str): Kaggle dataset identifier
         download_path (str): Local directory where the dataset will be copied
     """
     os.makedirs(download_path, exist_ok=True)
 
-    print(f"Downloading {dataset} with kagglehub...")
+    
 
     try:
         # kagglehub returns the local path to the dataset

@@ -10,7 +10,7 @@ random.seed(42)
 
 # Paths
 DATA_ROOT = os.path.join('data', 'raw', 'cos40007_dataset')
-SPLIT_ROOT = os.path.join('split')
+SPLIT_ROOT = os.path.join('data', 'split')
 IMAGES_ROOT = os.path.join(SPLIT_ROOT, 'images')
 LABELS_ROOT = os.path.join(SPLIT_ROOT, 'labels')
 
