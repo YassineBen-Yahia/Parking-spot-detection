@@ -1,4 +1,5 @@
 
+
 import os
 import shutil
 import random
@@ -9,22 +10,19 @@ random.seed(42)
 
 # Paths
 DATA_ROOT = os.path.join('data', 'raw', 'cos40007_dataset')
-PROCESSED_ROOT = os.path.join('data', 'processed')
-ALL_IMAGES = os.path.join(PROCESSED_ROOT, 'all_images')
-ALL_LABELS = os.path.join(PROCESSED_ROOT, 'all_labels')
-SPLIT_ROOT = os.path.join(PROCESSED_ROOT, 'split')
+SPLIT_ROOT = os.path.join('split')
+IMAGES_ROOT = os.path.join(SPLIT_ROOT, 'images')
+LABELS_ROOT = os.path.join(SPLIT_ROOT, 'labels')
 
-# Remove previous processed folders if they exist (optional, for clean rerun)
+# Remove previous split folders if they exist (optional, for clean rerun)
 def remove_dir_if_exists(path):
 	if os.path.exists(path):
 		shutil.rmtree(path)
 
-remove_dir_if_exists(PROCESSED_ROOT)
-os.makedirs(ALL_IMAGES, exist_ok=True)
-os.makedirs(ALL_LABELS, exist_ok=True)
-for split in ['train', 'val', 'test']:
-	os.makedirs(os.path.join(SPLIT_ROOT, split, 'images'), exist_ok=True)
-	os.makedirs(os.path.join(SPLIT_ROOT, split, 'labels'), exist_ok=True)
+remove_dir_if_exists(SPLIT_ROOT)
+for sub in ['train', 'val', 'test']:
+	os.makedirs(os.path.join(IMAGES_ROOT, sub), exist_ok=True)
+	os.makedirs(os.path.join(LABELS_ROOT, sub), exist_ok=True)
 
 # Collect all images and labels
 image_exts = ['*.jpg', '*.jpeg', '*.png']
@@ -55,11 +53,6 @@ if not pairs:
 	print("No image-label pairs found. Please check your dataset structure and label extensions.")
 	exit(1)
 
-# Copy all images and labels to unified folders
-for img, lbl in pairs:
-	shutil.copy2(img, os.path.join(ALL_IMAGES, os.path.basename(img)))
-	shutil.copy2(lbl, os.path.join(ALL_LABELS, os.path.basename(lbl)))
-
 # Shuffle and split
 random.shuffle(pairs)
 n = len(pairs)
@@ -73,8 +66,8 @@ splits = {'train': train_pairs, 'val': val_pairs, 'test': test_pairs}
 
 for split, split_pairs in splits.items():
 	for img, lbl in split_pairs:
-		shutil.copy2(img, os.path.join(SPLIT_ROOT, split, 'images', os.path.basename(img)))
-		shutil.copy2(lbl, os.path.join(SPLIT_ROOT, split, 'labels', os.path.basename(lbl)))
+		shutil.copy2(img, os.path.join(IMAGES_ROOT, split, os.path.basename(img)))
+		shutil.copy2(lbl, os.path.join(LABELS_ROOT, split, os.path.basename(lbl)))
 
 print(f"Total pairs: {n}\nTrain: {len(train_pairs)}, Val: {len(val_pairs)}, Test: {len(test_pairs)}")
-print(f"Done. Check the '{PROCESSED_ROOT}' directory.")
+print(f"Done. Check the '{SPLIT_ROOT}' directory.")
