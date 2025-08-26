@@ -1,5 +1,8 @@
 # Parking Spot Detection
 
+
+
+
 This project detects parking spots in images and videos using YOLOv8.
 
 ## Features
@@ -48,3 +51,4 @@ data/
 - For Kaggle datasets, set up your API key as described in the Kaggle docs.
 
 
+https://github.com/user-attachments/assets/d956d403-ab16-485e-9f63-7d50db60c7aa
