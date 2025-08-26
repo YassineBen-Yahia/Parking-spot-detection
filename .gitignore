@@ -1,10 +1,8 @@
 data/*
 git_commands/*
 
-# If you have a custom train directory name, add it here too
+
 yolo_train/*
-!yolo_train/exp/
-!yolo_train/exp/weights/
 !yolo_train/exp/weights/best.pt
 
 # Common large data and model files (good practice)
