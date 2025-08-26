@@ -15,6 +15,7 @@ This project detects parking spots in images and videos using YOLOv8.
    pip install -r requirements.txt
    ```
 3. Download or organize your dataset in the `data/` directory as described below.
+4. Run the first cells of `/notebooks/exploring_data.ipynb`
 
 ## Dataset Structure
 ```
@@ -29,15 +30,15 @@ data/
       train/ val/ test/
     labels/
       train/ val/ test/
+    data.yaml
 ```
 
 ## Training
-- Edit `src/config/data.yaml` to point to your split data.
 - Run the training notebook: `notebooks/training.ipynb`
 
 ## Evaluation
 - Run the evaluation notebook: `notebooks/eval.ipynb`
-- mAP and other metrics will be printed and saved.
+- mAP and other metrics will be printed.
 
 ## Prediction
 - Use `notebooks/predict.ipynb` to run predictions on images or videos.
@@ -46,5 +47,4 @@ data/
 - Make sure to adjust paths in the code/notebooks to match your setup.
 - For Kaggle datasets, set up your API key as described in the Kaggle docs.
 
-## License
-MIT
+
