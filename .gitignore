@@ -1,4 +1,5 @@
 data/*
+git_commands/*
 
 # If you have a custom train directory name, add it here too
 yolo_train/*
