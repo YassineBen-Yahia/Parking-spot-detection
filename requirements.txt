@@ -1,0 +1,7 @@
+ultralytics
+opencv-python
+matplotlib
+pillow
+glob2
+ipython
+jupyter
